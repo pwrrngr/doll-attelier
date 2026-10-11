@@ -1,6 +1,6 @@
 # Atelier Alla Mode
 
-*Couture d’Époque.* Website for Alla, a master dressmaker — born in Ukraine, forty years in European dress design and atelier work — who now makes couture garments for antique dolls, for collectors in Japan, England and Spain.
+*Couture for Antique Dolls.* Website for Alla, a master dressmaker — born in Ukraine, forty years in European dress design and atelier work — who now makes couture garments for antique dolls, for collectors in Japan, England and Spain.
 
 Live: https://pwrrngr.github.io/doll-attelier/
 
@@ -47,9 +47,9 @@ Ivory, ink and oxblood; Cormorant Garamond (display), EB Garamond (text), Jost (
 
 ## Brand
 
-**Atelier Alla Mode — Couture d’Époque.** Logo files (outlined SVG, colour follows `currentColor`) are in `site/assets/brand/`:
+**Atelier Alla Mode — Couture for Antique Dolls.** Logo files (outlined SVG, colour follows `currentColor`) are in `site/assets/brand/`:
 
-- `lockup.svg`: primary mark with the cameo dress-form emblem, ATELIER / ALLA MODE, and the *Couture d’Époque* tagline
+- `lockup.svg`: primary mark with the cameo dress-form emblem, ATELIER / ALLA MODE, and the *Couture for Antique Dolls* tagline
 - `wordmark.svg`: ATELIER / ALLA MODE, used in the header
 - `emblem.svg`: the cameo dress form alone
 - `monogram.svg`: AM in a double oval, used for the favicon, social avatar, labels and wax seals

@@ -4,7 +4,7 @@
     python3 tools/logo.py /path/to/google-fonts/ofl
 
 Writes to site/assets/brand/:
-  lockup.svg       emblem + ATELIER / ALLA MODE / COUTURE D'ÉPOQUE (stacked, primary)
+  lockup.svg       emblem + ATELIER / ALLA MODE / COUTURE FOR ANTIQUE DOLLS (stacked, primary)
   wordmark.svg     ATELIER / ALLA MODE (header)
   emblem.svg       dress-form emblem alone
   monogram.svg     AM monogram in an oval (favicon, social, labels)
@@ -130,11 +130,11 @@ def main(ofl):
             f'</g>')
     (OUT / "wordmark.svg").write_text(svg(W, H + 1, body, "Atelier Alla Mode"))
 
-    # Primary lockup: emblem, ATELIER, ALLA MODE, rule, COUTURE D'ÉPOQUE
-    tag_d, tag_w = bodoni_text.layout("COUTURE D’ÉPOQUE", 13, tracking=0.42)
+    # Primary lockup: emblem, ATELIER, ALLA MODE, rule, tagline
+    tag_d, tag_w = bodoni_text.layout("COUTURE FOR ANTIQUE DOLLS", 13, tracking=0.36)
     tag_cap = bodoni_text.cap_height(13)
     pad = 6
-    W2 = max(main_w, 330) + pad * 2
+    W2 = max(main_w, tag_w) + pad * 2
     em_scale = 0.82
     em_w, em_h = EMBLEM_W * em_scale, EMBLEM_H * em_scale
     y = 0
@@ -149,7 +149,7 @@ def main(ofl):
     y += 22
     parts.append(f'<path fill="currentColor" transform="translate({(W2 - tag_w) / 2:.2f} {y + tag_cap:.2f})" d="{tag_d}"/>')
     y += tag_cap + 2
-    (OUT / "lockup.svg").write_text(svg(W2, y, "".join(parts), "Atelier Alla Mode — Couture d'Époque"))
+    (OUT / "lockup.svg").write_text(svg(W2, y, "".join(parts), "Atelier Alla Mode — Couture for Antique Dolls"))
 
     # Emblem alone
     (OUT / "emblem.svg").write_text(svg(EMBLEM_W, EMBLEM_H, EMBLEM, "Atelier Alla Mode emblem"))
