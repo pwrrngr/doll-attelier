@@ -1,33 +1,33 @@
 # The Doll Atelier
 
-A luxury editorial website for a master seamstress creating one-of-one garments for antique dolls and collectors worldwide.
+A luxury editorial one-page site for a master seamstress creating one-of-one garments for antique dolls and collectors worldwide.
 
-## Experience
+Live: https://pwrrngr.github.io/doll-attelier/
 
-- full-screen fashion-house introduction
-- expanded five-piece portfolio
-- visual atelier process with tools, sketches, paper patterns, toile, and handwork
-- master seamstress story and worldwide private commission inquiry
-- responsive desktop and mobile layouts
+## Structure
 
-## Run locally
+Plain static HTML and CSS — no build step.
 
-Requires Node.js 22.13 or newer.
+- `site/index.html` — all page content
+- `site/styles.css` — the visual system and responsive layout
+- `site/images/` — portfolio and atelier imagery
+- `docs/market-benchmark.md` — competitive and luxury-positioning research (not published)
+
+Every push to `main` publishes the `site/` folder to GitHub Pages.
+
+## Preview locally
 
 ```bash
-npm ci
-npm run dev
+cd site && python3 -m http.server 8000
 ```
 
-Build the production version with `npm run build`.
+## Before launch — confirm with the client
 
-## Key files
-
-- `app/page.tsx` — page content and structure
-- `app/globals.css` — complete visual system and responsive layout
-- `public/` — original atelier and portfolio imagery
-- `docs/market-benchmark.md` — competitive and luxury-positioning research
+- Real enquiry email (currently `hello@thedollatelier.com` in `index.html`)
+- "40+ years at the needle", "replies within 2–3 studio days", and "limited commissions each season"
+- Portfolio photos of her actual garments, with correct titles, eras and materials
+- Instagram or other social links, if any
 
 ## Brand direction
 
-Quiet fashion-house restraint: antique ivory, ink black, oxblood, archival typography, generous negative space, and tactile heirloom imagery. The experience presents miniature dressmaking with the seriousness of couture without imitating another house’s marks or identity.
+Quiet fashion-house restraint: antique ivory, ink black, oxblood, archival typography (Cormorant Garamond, EB Garamond, Jost), generous negative space, and tactile heirloom imagery.
