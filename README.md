@@ -1,6 +1,6 @@
 # The Doll Atelier
 
-Website for a Ukrainian master dressmaker — forty years in dress design and atelier work — who now makes couture garments for antique dolls, for collectors in Japan, England and Spain.
+Website for Alla, a master dressmaker — born in Ukraine, forty years in European dress design and atelier work — who now makes couture garments for antique dolls, for collectors in Japan, England and Spain.
 
 Live: https://pwrrngr.github.io/doll-attelier/
 
@@ -32,10 +32,10 @@ Originals live in `assets-src/` (not published). The build makes 800/1600/2400px
 
 ## Before launch — confirm with the client
 
-- [ ] Her name, exactly as it should appear (`CONFIG["MAKER"]`)
+- [x] Her name — Alla (`CONFIG["MAKER"]`)
 - [ ] Real enquiry email (`CONFIG["EMAIL"]`)
 - [ ] **Portfolio photos of her real garments.** The three portfolio images look AI-generated; replace them, and correct titles, eras and materials
-- [ ] Her story copy on The Maker page — Ukraine, dress design, running an atelier, moving to dolls
+- [ ] Her story copy on The Maker page — born in Ukraine, European dressmaking, running an atelier, moving to dolls
 - [ ] The manifesto line signed with her name on the home page
 - [ ] Principles: "one pair of hands / nothing outsourced", "documented as new work", garments that "come away cleanly"
 - [ ] "A limited number of commissions each season"; FAQ answers on timelines and shipping
@@ -43,4 +43,4 @@ Originals live in `assets-src/` (not published). The build makes 800/1600/2400px
 
 ## Design notes
 
-Ivory, ink and oxblood; Cormorant Garamond (display), EB Garamond (text), Jost (labels), all with Cyrillic. The red-and-black cross-stitch band is drawn from Ukrainian *vyshyvka*; small Ukrainian words mark sections (спадщина — heritage, майстерня — workshop, ручна робота — handwork).
+Ivory, ink and oxblood; Cormorant Garamond (display), EB Garamond (text), Jost (labels), all with Cyrillic. Heritage is framed as European couture: French atelier terms mark sections (l’héritage, l’atelier, le métier, fait main), and a small red-and-black cross-stitch band runs through the site as a quiet folk-embroidery accent.

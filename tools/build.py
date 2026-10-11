@@ -30,7 +30,7 @@ IMG_SRC = ROOT / "assets-src"
 
 CONFIG = {
     "SITE_NAME": "The Doll Atelier",
-    "MAKER": "Maker Name",            # <- her name, exactly as it should appear
+    "MAKER": "Alla",                  # <- her name, exactly as it should appear
     "EMAIL": "hello@thedollatelier.com",  # <- real enquiry address
     "SITE_URL": "https://pwrrngr.github.io/doll-attelier/",
 }
