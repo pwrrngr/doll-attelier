@@ -112,8 +112,8 @@ def svg(w, h, body, title):
 
 def main(ofl):
     ofl = Path(ofl)
-    bodoni = Text(load(ofl / "bodonimoda" / "BodoniModa[opsz,wght].ttf", wght=430, opsz=48))
-    bodoni_text = Text(load(ofl / "bodonimoda" / "BodoniModa[opsz,wght].ttf", wght=480, opsz=11))
+    bodoni = Text(load(ofl / "bodonimoda" / "BodoniModa[opsz,wght].ttf", wght=470, opsz=28))
+    bodoni_text = Text(load(ofl / "bodonimoda" / "BodoniModa[opsz,wght].ttf", wght=520, opsz=11))
     OUT.mkdir(parents=True, exist_ok=True)
 
     # Wordmark (header): ATELIER small above ALLA MODE
