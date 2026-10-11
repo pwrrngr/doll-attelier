@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <link rel="canonical" href="{{CANONICAL}}">
+  <meta name="theme-color" content="#14110e">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{SITE_NAME}}">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:image" content="{{OG_IMAGE}}">
+  <meta property="og:url" content="{{CANONICAL}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&display=swap">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/site.js" defer></script>
+</head>
+<body class="page-{{PAGE}}">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="{{HEADER_CLASS}}">
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+  <nav class="nav nav--left" aria-label="Primary">{{NAV_LEFT}}</nav>
+  <a class="wordmark" href="index.html" aria-label="{{SITE_NAME}}, home"><small>The Doll</small><span>Atelier</span></a>
+  <nav class="nav nav--right" aria-label="Secondary">{{NAV_RIGHT}}</nav>
+</header>
+
+<div class="menu" id="menu">
+  <ol>{{MENU}}</ol>
+  <p class="menu-foot">Private commissions worldwide<br><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></p>
+</div>
+
+<main id="main">
+{{BODY}}
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <p class="footer-statement">Garments made slowly,<br><em>to be kept for generations.</em><br><a class="link" href="commissions.html">Begin a commission</a></p>
+    <div class="footer-col">
+      <h4>The atelier</h4>
+      <ul>
+        <li><a href="maker.html">The Maker</a></li>
+        <li><a href="savoir-faire.html">Savoir-faire</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="commissions.html">Commissions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Correspondence</h4>
+      <ul>
+        <li><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>
+        <li>Collectors worldwide</li>
+        <li>Private commissions</li>
+      </ul>
+    </div>
+  </div>
+  <div class="stitch" aria-hidden="true"></div>
+  <div class="footer-mark">
+    <span class="big" aria-hidden="true">Atelier</span>
+    <div class="footer-base">
+      <span>© <span data-year>2026</span> {{SITE_NAME}} · {{MAKER}}</span>
+      <span class="uk" lang="uk">Зроблено вручну — made by hand</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

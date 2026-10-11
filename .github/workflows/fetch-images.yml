@@ -13,17 +13,17 @@ jobs:
       - name: Download and convert
         run: |
           sudo apt-get install -y -qq webp >/dev/null
-          mkdir -p site/images/src
+          mkdir -p assets-src
           cat .github/image-sources/*.txt | while read -r name url; do
             [ -z "$name" ] && continue
-            [ -f "site/images/src/$name.png" ] && continue
-            curl -fsSL "$url" -o "site/images/src/$name.png"
+            [ -f "assets-src/$name.png" ] && continue
+            curl -fsSL "$url" -o "assets-src/$name.png"
           done
-          ls -la site/images/src
+          ls -la assets-src
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add site/images/src
+          git add assets-src
           git diff --cached --quiet || git commit -m "Add generated atelier images"
           git push

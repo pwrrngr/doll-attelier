@@ -1,33 +1,46 @@
 # The Doll Atelier
 
-A luxury editorial one-page site for a master seamstress creating one-of-one garments for antique dolls and collectors worldwide.
+Website for a Ukrainian master dressmaker — forty years in dress design and atelier work — who now makes couture garments for antique dolls, for collectors in Japan, England and Spain.
 
 Live: https://pwrrngr.github.io/doll-attelier/
 
-## Structure
+## Pages
 
-Plain static HTML and CSS — no build step.
+| Page | File | Purpose |
+|---|---|---|
+| Maison (home) | `src/pages/index.html` | Hero, manifesto, selected works, heritage, savoir-faire, worldwide, commission CTA |
+| The Maker | `src/pages/maker.html` | Her story, 40 years, Ukrainian heritage, principles |
+| Savoir-faire | `src/pages/savoir-faire.html` | Six stages of making, materials glossary, techniques |
+| Portfolio | `src/pages/portfolio.html` | Each garment with era, materials, handwork; collections by country |
+| Commissions | `src/pages/commissions.html` | How it works, enquiry form (opens a prepared email), FAQ |
 
-- `site/index.html` — all page content
-- `site/styles.css` — the visual system and responsive layout
-- `site/images/` — portfolio and atelier imagery
-- `docs/market-benchmark.md` — competitive and luxury-positioning research (not published)
+## Editing
 
-Every push to `main` publishes the `site/` folder to GitHub Pages.
+1. Edit text in `src/pages/*.html` (shared header/footer in `src/layout.html`).
+2. Her name, the enquiry email and the site URL are set **once** in `CONFIG` at the top of `tools/build.py`.
+3. Rebuild: `python3 tools/build.py` (add `--images` after adding or replacing photos in `assets-src/`; needs Pillow).
+4. Commit `src/`, `site/` and `assets-src/`. Pushing to `main` publishes `site/` to GitHub Pages.
 
-## Preview locally
+Preview locally: `cd site && python3 -m http.server 8000`.
 
-```bash
-cd site && python3 -m http.server 8000
-```
+### Images
+
+Originals live in `assets-src/` (not published). The build makes 800/1600/2400px JPGs in `site/images/`. In pages, use `[[img name | alt text | sizes]]`.
+
+- `pearl-parlour`, `blue-hour`, `oxblood`, `worktable` — from the first ChatGPT draft
+- the rest — mood imagery generated with Artlist (atmosphere only, not presented as her finished work)
 
 ## Before launch — confirm with the client
 
-- Real enquiry email (currently `hello@thedollatelier.com` in `index.html`)
-- "40+ years at the needle", "replies within 2–3 studio days", and "limited commissions each season"
-- Portfolio photos of her actual garments, with correct titles, eras and materials
-- Instagram or other social links, if any
+- [ ] Her name, exactly as it should appear (`CONFIG["MAKER"]`)
+- [ ] Real enquiry email (`CONFIG["EMAIL"]`)
+- [ ] **Portfolio photos of her real garments.** The three portfolio images look AI-generated; replace them, and correct titles, eras and materials
+- [ ] Her story copy on The Maker page — Ukraine, dress design, running an atelier, moving to dolls
+- [ ] The manifesto line signed with her name on the home page
+- [ ] Principles: "one pair of hands / nothing outsourced", "documented as new work", garments that "come away cleanly"
+- [ ] "A limited number of commissions each season"; FAQ answers on timelines and shipping
+- [ ] Optional: Instagram link, real collector testimonials (only with permission, never invented)
 
-## Brand direction
+## Design notes
 
-Quiet fashion-house restraint: antique ivory, ink black, oxblood, archival typography (Cormorant Garamond, EB Garamond, Jost), generous negative space, and tactile heirloom imagery.
+Ivory, ink and oxblood; Cormorant Garamond (display), EB Garamond (text), Jost (labels), all with Cyrillic. The red-and-black cross-stitch band is drawn from Ukrainian *vyshyvka*; small Ukrainian words mark sections (спадщина — heritage, майстерня — workshop, ручна робота — handwork).
