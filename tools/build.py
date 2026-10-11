@@ -39,7 +39,7 @@ WIDTHS = (800, 1600, 2400)
 
 NAV = [
     ("home", "index.html", "Maison"),
-    ("maker", "maker.html", "The Maker"),
+    ("maker", "maker.html", "About"),
     ("savoir-faire", "savoir-faire.html", "Savoir-faire"),
     ("portfolio", "portfolio.html", "Portfolio"),
     ("commissions", "commissions.html", "Commissions"),

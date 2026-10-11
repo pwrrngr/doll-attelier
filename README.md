@@ -9,7 +9,7 @@ Live: https://pwrrngr.github.io/doll-attelier/
 | Page | File | Purpose |
 |---|---|---|
 | Maison (home) | `src/pages/index.html` | Hero, manifesto, selected works, heritage, savoir-faire, worldwide, commission CTA |
-| The Maker | `src/pages/maker.html` | Her story, 40 years, Ukrainian heritage, principles |
+| About | `src/pages/maker.html` | Her story, 40 years, Ukrainian heritage, principles |
 | Savoir-faire | `src/pages/savoir-faire.html` | Six stages of making, materials glossary, techniques |
 | Portfolio | `src/pages/portfolio.html` | Each garment with era, materials, handwork; collections by country |
 | Commissions | `src/pages/commissions.html` | How it works, enquiry form (opens a prepared email), FAQ |
@@ -35,7 +35,7 @@ Originals live in `assets-src/` (not published). The build makes 800/1600/2400px
 - [x] Her name — Alla (`CONFIG["MAKER"]`)
 - [ ] Real enquiry email (`CONFIG["EMAIL"]`)
 - [ ] **Portfolio photos of her real garments.** The three portfolio images look AI-generated; replace them, and correct titles, eras and materials
-- [ ] Her story copy on The Maker page — born in Ukraine, European dressmaking, running an atelier, moving to dolls
+- [ ] Her story copy on the About page — born in Ukraine, European dressmaking, running an atelier, moving to dolls
 - [ ] The manifesto line signed with her name on the home page
 - [ ] Principles: "one pair of hands / nothing outsourced", "documented as new work", garments that "come away cleanly"
 - [ ] "A limited number of commissions each season"; FAQ answers on timelines and shipping
