@@ -90,6 +90,27 @@
     });
   }
 
+  /* Lightbox for portfolio images */
+  var zooms = document.querySelectorAll("[data-zoom]");
+  if (zooms.length && "HTMLDialogElement" in window) {
+    var box = document.createElement("dialog");
+    box.className = "lightbox";
+    box.innerHTML = '<img alt=""><p></p><button type="button" aria-label="Close">×</button>';
+    document.body.appendChild(box);
+    var bimg = box.querySelector("img"), bcap = box.querySelector("p");
+    zooms.forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        var img = a.querySelector("img");
+        bimg.src = a.getAttribute("href");
+        bimg.alt = img ? img.alt : "";
+        bcap.textContent = img ? img.alt : "";
+        box.showModal();
+      });
+    });
+    box.addEventListener("click", function () { box.close(); });
+  }
+
   /* Year */
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();

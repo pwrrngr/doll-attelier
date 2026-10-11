@@ -27,14 +27,16 @@ Preview locally: `cd site && python3 -m http.server 8000`.
 
 Originals live in `assets-src/` (not published). The build makes 800/1600/2400px JPGs in `site/images/`. In pages, use `[[img name | alt text | sizes]]`.
 
-- `pearl-parlour`, `blue-hour`, `oxblood`, `worktable` — from the first ChatGPT draft
-- the rest — mood imagery generated with Artlist (atmosphere only, not presented as her finished work)
+- `work-*` are **Alla's real garments**, retouched with `python3 tools/retouch.py <folder-of-originals>`. The retouch only crops, adjusts tone, and turns the bright red satin backdrop to deep oxblood. The garments themselves are never altered
+- `worktable` comes from the first ChatGPT draft
+- the rest are mood images generated with Artlist (atmosphere only, never presented as her work)
 
 ## Before launch — confirm with the client
 
 - [x] Her name — Alla (`CONFIG["MAKER"]`)
 - [ ] Real enquiry email (`CONFIG["EMAIL"]`)
-- [ ] **Portfolio photos of her real garments.** The three portfolio images look AI-generated; replace them, and correct titles, eras and materials
+- [x] Portfolio uses her real garments (six pieces)
+- [ ] Confirm portfolio titles, eras and material descriptions with Alla (written from the photos)
 - [ ] Her story copy on the About page — born in Ukraine, European dressmaking, running an atelier, moving to dolls
 - [ ] The manifesto line signed with her name on the home page
 - [ ] Principles: "one pair of hands / nothing outsourced", "documented as new work", garments that "come away cleanly"
@@ -49,10 +51,11 @@ Ivory, ink and oxblood; Cormorant Garamond (display), EB Garamond (text), Jost (
 
 **Atelier Alla Mode — Couture for Antique Dolls.** Logo files (outlined SVG, colour follows `currentColor`) are in `site/assets/brand/`:
 
-- `lockup.svg`: primary mark with the cameo dress-form emblem, ATELIER / ALLA MODE, and the *Couture for Antique Dolls* tagline
-- `wordmark.svg`: ATELIER / ALLA MODE, used in the header
-- `emblem.svg`: the cameo dress form alone
+- `lockup.svg`: the primary mark, an engraved dress-form illustration above ATELIER / ALLA MODE with the *Couture for Antique Dolls* tagline
+- `seal.svg`: the round heritage seal, with the illustration in the centre and the name arched around it
+- `wordmark.svg`: ATELIER / ALLA MODE on its own
+- `emblem.svg`: the dress-form illustration alone (used in the header)
 - `monogram.svg`: AM in a double oval, used for the favicon, social avatar, labels and wax seals
 - `brand-sheet.png`: preview of everything on ivory, ink and oxblood
 
-The wordmark is set in Bodoni Moda (SIL OFL). Regenerate with `python3 tools/logo.py <path-to-google-fonts>/ofl`. Web fonts are self-hosted in `site/assets/fonts/`.
+The logo is set in Cinzel (SIL OFL). Regenerate with `python3 tools/logo.py <path-to-google-fonts>/ofl [cinzel|cormorant|marcellus|forum]`. Web fonts are self-hosted in `site/assets/fonts/`.

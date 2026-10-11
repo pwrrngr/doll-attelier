@@ -99,6 +99,7 @@ p { margin: 0 0 1.1em; }
 .stitch { height: 10px; background: var(--ornament) center / 96px 10px no-repeat; }
 .stitch--short { width: 96px; }
 .emblem-mark { display: block; width: 74px; margin: 0 auto 44px; color: var(--ink); }
+.seal-mark { width: 150px; margin-bottom: 52px; }
 .emblem-mark svg { display: block; width: 100%; height: auto; }
 
 /* --- Header --------------------------------------------------------------- */
@@ -118,10 +119,10 @@ p { margin: 0 0 1.1em; }
 .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .5s var(--ease-out); }
 .nav a:hover::after, .nav a[aria-current="page"]::after { transform: scaleX(1); transform-origin: left; }
 .wordmark { display: flex; flex-direction: column; align-items: center; line-height: 0; color: inherit; }
-.wordmark > svg { display: block; width: 236px; height: auto; transition: width .5s var(--ease); }
-.wordmark-emblem { display: block; width: 46px; margin-bottom: 12px; overflow: hidden; max-height: 64px; transition: max-height .5s var(--ease), margin .5s var(--ease), opacity .4s; }
+.wordmark > svg { display: block; width: 250px; height: auto; transition: width .5s var(--ease); }
+.wordmark-emblem { display: block; width: 44px; margin-bottom: 10px; overflow: hidden; max-height: 58px; transition: max-height .5s var(--ease), margin .5s var(--ease), opacity .4s; }
 .wordmark-emblem svg { display: block; width: 100%; height: auto; }
-.site-header.is-scrolled .wordmark > svg { width: 190px; }
+.site-header.is-scrolled .wordmark > svg { width: 200px; }
 .site-header.is-scrolled .wordmark-emblem { max-height: 0; margin-bottom: 0; opacity: 0; }
 .menu-toggle { display: none; justify-self: start; width: 44px; height: 44px; margin-left: -10px; border: 0; background: none; cursor: pointer; }
 .menu-toggle span { display: block; width: 24px; height: 1px; margin: 7px auto; background: currentColor; transition: transform .4s var(--ease-out), opacity .3s; }
@@ -190,6 +191,18 @@ body.menu-open .menu-toggle span:last-child { transform: translateY(-4px) rotate
 .frame--landscape { aspect-ratio: 3 / 2; }
 .frame--wide { aspect-ratio: 16 / 9; }
 .frame--tall { aspect-ratio: 3 / 4; }
+.frame--square { aspect-ratio: 1 / 1; }
+.look-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+.look-gallery .frame { aspect-ratio: 4 / 5; }
+.look-gallery--wide { grid-template-columns: 1fr; }
+.look-gallery--wide .frame { aspect-ratio: auto; }
+.zoom { display: block; width: 100%; height: 100%; cursor: zoom-in; }
+.lightbox { position: fixed; inset: 0; z-index: 90; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: #0e0a08; }
+.lightbox::backdrop { background: #0e0a08; }
+.lightbox[open] { display: flex; align-items: center; justify-content: center; }
+.lightbox img { max-width: calc(100vw - 48px); max-height: calc(100vh - 96px); width: auto; height: auto; object-fit: contain; }
+.lightbox p { position: absolute; left: 24px; right: 80px; bottom: 18px; margin: 0; font: 400 16px/1.5 var(--text); color: #d4cbbf; }
+.lightbox button { position: absolute; top: 14px; right: 14px; width: 48px; height: 48px; border: 0; background: none; color: var(--paper); font: 300 34px/1 var(--label); cursor: pointer; }
 a:hover .frame img, .frame:hover img { transform: scale(1.03); }
 figcaption, .caption { margin-top: 14px; font: 500 11.5px/1.6 var(--label); letter-spacing: .14em; text-transform: uppercase; color: var(--ash); }
 .dark figcaption, .dark .caption { color: var(--ash-light); }
@@ -329,7 +342,7 @@ figcaption, .caption { margin-top: 14px; font: 500 11.5px/1.6 var(--label); lett
 .footer-col a { transition: opacity .3s; }
 .footer-col a:hover { opacity: .6; }
 .footer-mark { padding-top: 64px; border-top: 1px solid var(--line-light); }
-.footer-lockup { display: block; width: min(360px, 76vw); margin: 0 auto; color: var(--paper); }
+.footer-lockup { display: block; width: min(380px, 78vw); margin: 0 auto; color: var(--paper); }
 .footer-lockup svg { display: block; width: 100%; height: auto; }
 .footer-base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin-top: 40px; font: 500 11.5px var(--label); letter-spacing: .12em; text-transform: uppercase; color: var(--ash-light); }
 .footer-base .uk { font: italic 15px var(--display); letter-spacing: .02em; text-transform: none; color: #c9a7a0; }
@@ -382,7 +395,7 @@ a:hover .unveil.is-in img, .unveil.is-in:hover img { transform: scale(1.03); }
   .nav { display: none; }
   .menu-toggle { display: block; }
   .wordmark { justify-self: center; }
-  .wordmark > svg { width: 176px; }
+  .wordmark > svg { width: 184px; }
   .site-header.is-scrolled .wordmark > svg { width: 160px; }
   .wordmark-emblem { width: 34px; margin-bottom: 8px; }
 

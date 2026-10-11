@@ -51,29 +51,31 @@ def make_images():
     from PIL import Image  # noqa: WPS433
 
     IMG_OUT.mkdir(parents=True, exist_ok=True)
+    for old in IMG_OUT.glob("*.jpg"):
+        old.unlink()
     for src in sorted(IMG_SRC.glob("*.*")):
         if src.suffix.lower() not in (".png", ".jpg", ".jpeg"):
             continue
         im = Image.open(src).convert("RGB")
-        for w in WIDTHS:
-            if w > im.width * 1.05 and w != WIDTHS[0]:
-                continue
-            target = IMG_OUT / f"{src.stem}-{w}.jpg"
-            h = round(im.height * min(w, im.width) / im.width)
-            im.resize((min(w, im.width), h), Image.LANCZOS).save(
-                target, "JPEG", quality=82, optimize=True, progressive=True)
-        print("image", src.stem, im.size)
+        targets = [w for w in WIDTHS if w <= im.width]
+        if not targets or im.width > targets[-1] * 1.15:
+            targets.append(im.width)
+        for w in targets:
+            h = round(im.height * w / im.width)
+            im.resize((w, h), Image.LANCZOS).save(
+                IMG_OUT / f"{src.stem}-{w}.jpg", "JPEG", quality=84, optimize=True, progressive=True)
+        print("image", src.stem, im.size, targets)
 
 
 def image_variants(name):
     found = []
-    for w in WIDTHS:
-        p = IMG_OUT / f"{name}-{w}.jpg"
-        if p.exists():
-            found.append((w, p))
+    for p in IMG_OUT.glob(f"{name}-*.jpg"):
+        tail = p.stem[len(name) + 1:]
+        if tail.isdigit():
+            found.append((int(tail), p))
     if not found:
         raise SystemExit(f"Missing image variants for '{name}'. Run with --images.")
-    return found
+    return sorted(found)
 
 
 def img_tag(match):
@@ -86,7 +88,7 @@ def img_tag(match):
     w0, p0 = variants[min(1, len(variants) - 1)]
     with Image.open(p0) as im:
         width, height = im.size
-    srcset = ", ".join(f"images/{p.name} {Image.open(p).width}w" for _, p in variants)
+    srcset = ", ".join(f"images/{p.name} {w}w" for w, p in variants)
     attrs = [
         f'src="images/{p0.name}"',
         f'srcset="{srcset}"',
@@ -96,7 +98,11 @@ def img_tag(match):
         'decoding="async"',
         'fetchpriority="high"' if eager else 'loading="lazy"',
     ]
-    return "<img " + " ".join(attrs) + ">"
+    tag = "<img " + " ".join(attrs) + ">"
+    if match.group(0).startswith("[[zoom"):
+        big = variants[-1][1].name
+        return f'<a class="zoom" href="images/{big}" data-zoom aria-label="Enlarge: {html.escape(alt, quote=True)}">{tag}</a>'
+    return tag
 
 
 def parse_page(text):
@@ -132,7 +138,7 @@ def build():
         active = meta.get("nav", "")
         links = nav_links(active)
         menu = "\n".join(f"<li>{a}</li>" for a in links)
-        body = re.sub(r"\[\[img\s+(.*?)\]\]", img_tag, body, flags=re.S)
+        body = re.sub(r"\[\[(?:img|zoom)\s+(.*?)\]\]", img_tag, body, flags=re.S)
         title = meta.get("title", CONFIG["SITE_NAME"])
         full_title = CONFIG["SITE_NAME"] if page.stem == "index" and title == CONFIG["SITE_NAME"] else f"{title} — {CONFIG['SITE_NAME']}"
         brand = OUT / "assets" / "brand"
@@ -143,6 +149,7 @@ def build():
         values["WORDMARK_SVG"] = inline("wordmark.svg")
         values["LOCKUP_SVG"] = inline("lockup.svg")
         values["EMBLEM_SVG"] = inline("emblem.svg")
+        values["SEAL_SVG"] = inline("seal.svg")
         values.update({
             "TITLE": html.escape(full_title),
             "DESCRIPTION": html.escape(meta.get("description", "")),
