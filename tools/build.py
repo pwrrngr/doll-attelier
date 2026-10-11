@@ -29,7 +29,8 @@ IMG_OUT = OUT / "images"
 IMG_SRC = ROOT / "assets-src"
 
 CONFIG = {
-    "SITE_NAME": "The Doll Atelier",
+    "SITE_NAME": "Atelier Alla Mode",
+    "TAGLINE": "Couture d\u2019\u00c9poque",
     "MAKER": "Alla",                  # <- her name, exactly as it should appear
     "EMAIL": "hello@thedollatelier.com",  # <- real enquiry address
     "SITE_URL": "https://pwrrngr.github.io/doll-attelier/",
@@ -134,7 +135,14 @@ def build():
         body = re.sub(r"\[\[img\s+(.*?)\]\]", img_tag, body, flags=re.S)
         title = meta.get("title", CONFIG["SITE_NAME"])
         full_title = CONFIG["SITE_NAME"] if page.stem == "index" and title == CONFIG["SITE_NAME"] else f"{title} — {CONFIG['SITE_NAME']}"
+        brand = OUT / "assets" / "brand"
+        def inline(name):
+            s = (brand / name).read_text(encoding="utf-8")
+            return re.sub(r"<title>.*?</title>", "", s).replace(' role="img"', ' aria-hidden="true" focusable="false"', 1)
         values = dict(CONFIG)
+        values["WORDMARK_SVG"] = inline("wordmark.svg")
+        values["LOCKUP_SVG"] = inline("lockup.svg")
+        values["EMBLEM_SVG"] = inline("emblem.svg")
         values.update({
             "TITLE": html.escape(full_title),
             "DESCRIPTION": html.escape(meta.get("description", "")),
@@ -148,7 +156,7 @@ def build():
             "PAGE": page.stem,
         })
         html_out = fill(layout, values)
-        html_out = fill(html_out, CONFIG)  # placeholders used inside page bodies
+        html_out = fill(html_out, {k: v for k, v in values.items() if k != "BODY"})  # placeholders inside page bodies
         (OUT / page.name).write_text(html_out, encoding="utf-8")
         print("page", page.name)
 

@@ -1,4 +1,4 @@
-/* The Doll Atelier — interactions. No dependencies. */
+/* Atelier Alla Mode — interactions. No dependencies. */
 (function () {
   var root = document.documentElement;
   root.classList.remove("no-js");

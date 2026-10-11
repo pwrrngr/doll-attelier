@@ -1,6 +1,6 @@
-# The Doll Atelier
+# Atelier Alla Mode
 
-Website for Alla, a master dressmaker — born in Ukraine, forty years in European dress design and atelier work — who now makes couture garments for antique dolls, for collectors in Japan, England and Spain.
+*Couture d’Époque.* Website for Alla, a master dressmaker — born in Ukraine, forty years in European dress design and atelier work — who now makes couture garments for antique dolls, for collectors in Japan, England and Spain.
 
 Live: https://pwrrngr.github.io/doll-attelier/
 
@@ -44,3 +44,15 @@ Originals live in `assets-src/` (not published). The build makes 800/1600/2400px
 ## Design notes
 
 Ivory, ink and oxblood; Cormorant Garamond (display), EB Garamond (text), Jost (labels), all with Cyrillic. Heritage is framed as European couture: French atelier terms mark sections (l’héritage, l’atelier, le métier, fait main), and a small red-and-black cross-stitch band runs through the site as a quiet folk-embroidery accent.
+
+## Brand
+
+**Atelier Alla Mode — Couture d’Époque.** Logo files (outlined SVG, colour follows `currentColor`) are in `site/assets/brand/`:
+
+- `lockup.svg`: primary mark with the cameo dress-form emblem, ATELIER / ALLA MODE, and the *Couture d’Époque* tagline
+- `wordmark.svg`: ATELIER / ALLA MODE, used in the header
+- `emblem.svg`: the cameo dress form alone
+- `monogram.svg`: AM in a double oval, used for the favicon, social avatar, labels and wax seals
+- `brand-sheet.png`: preview of everything on ivory, ink and oxblood
+
+The wordmark is set in Bodoni Moda (SIL OFL). Regenerate with `python3 tools/logo.py <path-to-google-fonts>/ofl`. Web fonts are self-hosted in `site/assets/fonts/`.

@@ -4,6 +4,13 @@
    Jost (labels). Cross-stitch motif drawn from Ukrainian vyshyvka.
    ========================================================================== */
 
+/* --- Fonts (self-hosted, SIL Open Font License) ------------------------ */
+@font-face { font-family: "Cormorant Garamond"; src: url("fonts/cormorant.woff") format("woff"); font-weight: 300 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url("fonts/cormorant-italic.woff") format("woff"); font-weight: 300 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("fonts/ebgaramond.woff") format("woff"); font-weight: 400 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("fonts/ebgaramond-italic.woff") format("woff"); font-weight: 400 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Jost"; src: url("fonts/jost.woff") format("woff"); font-weight: 100 900; font-style: normal; font-display: swap; }
+
 :root {
   --paper: #f4f0e9;
   --paper-2: #ebe4d8;
@@ -26,8 +33,8 @@
   --ease: cubic-bezier(.22, .61, .36, 1);
   --ease-out: cubic-bezier(.16, 1, .3, 1);
 
-  /* Cross-stitch band — a row of stitched rhombi */
-  --stitch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='14' viewBox='0 0 44 14' shape-rendering='crispEdges'%3E%3Cg fill='%236b1f24'%3E%3Crect x='20' y='0' width='2' height='2'/%3E%3Crect x='18' y='2' width='2' height='2'/%3E%3Crect x='22' y='2' width='2' height='2'/%3E%3Crect x='16' y='4' width='2' height='2'/%3E%3Crect x='24' y='4' width='2' height='2'/%3E%3Crect x='14' y='6' width='2' height='2'/%3E%3Crect x='26' y='6' width='2' height='2'/%3E%3Crect x='20' y='6' width='2' height='2'/%3E%3Crect x='16' y='8' width='2' height='2'/%3E%3Crect x='24' y='8' width='2' height='2'/%3E%3Crect x='18' y='10' width='2' height='2'/%3E%3Crect x='22' y='10' width='2' height='2'/%3E%3Crect x='20' y='12' width='2' height='2'/%3E%3C/g%3E%3Cg fill='%2314110e'%3E%3Crect x='0' y='6' width='2' height='2'/%3E%3Crect x='4' y='6' width='2' height='2'/%3E%3Crect x='8' y='6' width='2' height='2'/%3E%3Crect x='34' y='6' width='2' height='2'/%3E%3Crect x='38' y='6' width='2' height='2'/%3E%3Crect x='42' y='6' width='2' height='2'/%3E%3C/g%3E%3C/svg%3E");
+  /* Ornament: line — diamond — line, from the logo */
+  --ornament: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='10' viewBox='0 0 96 10'%3E%3Cpath d='M0 5H40M56 5H96' stroke='%2314110e' stroke-width='.8'/%3E%3Cpath d='M48 1.6L51.4 5 48 8.4 44.6 5z' fill='%236b1f24'/%3E%3C/svg%3E");
 }
 
 /* --- Base ----------------------------------------------------------------- */
@@ -89,9 +96,10 @@ p { margin: 0 0 1.1em; }
 .dark .rule { background: var(--line-light); }
 
 /* Cross-stitch divider */
-.stitch { height: 14px; background: var(--stitch) center / 44px 14px repeat-x; opacity: .9; }
-.stitch--short { width: 132px; }
-.dark .stitch { filter: invert(1) hue-rotate(180deg) saturate(.8); opacity: .75; }
+.stitch { height: 10px; background: var(--ornament) center / 96px 10px no-repeat; }
+.stitch--short { width: 96px; }
+.emblem-mark { display: block; width: 74px; margin: 0 auto 44px; color: var(--ink); }
+.emblem-mark svg { display: block; width: 100%; height: auto; }
 
 /* --- Header --------------------------------------------------------------- */
 .site-header {
@@ -109,10 +117,9 @@ p { margin: 0 0 1.1em; }
 .nav a { position: relative; padding-block: 6px; }
 .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .5s var(--ease-out); }
 .nav a:hover::after, .nav a[aria-current="page"]::after { transform: scaleX(1); transform-origin: left; }
-.wordmark { display: grid; justify-items: center; line-height: 1; text-transform: uppercase; }
-.wordmark small { font: 500 9.5px var(--label); letter-spacing: .42em; margin: 0 0 7px .42em; }
-.wordmark span { font: 400 27px/1 var(--display); letter-spacing: .22em; margin-left: .22em; }
-.site-header.is-scrolled .wordmark span { font-size: 23px; }
+.wordmark { display: block; line-height: 0; color: inherit; }
+.wordmark svg { display: block; width: 230px; height: auto; transition: width .5s var(--ease); }
+.site-header.is-scrolled .wordmark svg { width: 186px; }
 .menu-toggle { display: none; justify-self: start; width: 44px; height: 44px; margin-left: -10px; border: 0; background: none; cursor: pointer; }
 .menu-toggle span { display: block; width: 24px; height: 1px; margin: 7px auto; background: currentColor; transition: transform .4s var(--ease-out), opacity .3s; }
 .header-cta { display: none; }
@@ -318,8 +325,9 @@ figcaption, .caption { margin-top: 14px; font: 500 10.5px/1.6 var(--label); lett
 .footer-col li { margin-bottom: 10px; font-size: 17px; }
 .footer-col a { transition: opacity .3s; }
 .footer-col a:hover { opacity: .6; }
-.footer-mark { padding-top: 40px; border-top: 1px solid var(--line-light); }
-.footer-mark .big { display: block; font: 400 clamp(56px, 12.4vw, 220px)/.86 var(--display); letter-spacing: .02em; text-transform: uppercase; text-align: center; white-space: nowrap; }
+.footer-mark { padding-top: 64px; border-top: 1px solid var(--line-light); }
+.footer-lockup { display: block; width: min(360px, 76vw); margin: 0 auto; color: var(--paper); }
+.footer-lockup svg { display: block; width: 100%; height: auto; }
 .footer-base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin-top: 40px; font: 500 10.5px var(--label); letter-spacing: .16em; text-transform: uppercase; color: var(--ash-light); }
 .footer-base .uk { font: italic 15px var(--display); letter-spacing: .02em; text-transform: none; color: #c9a7a0; }
 
@@ -370,9 +378,8 @@ a:hover .unveil.is-in img, .unveil.is-in:hover img { transform: scale(1.03); }
   .site-header.is-scrolled { height: 64px; }
   .nav { display: none; }
   .menu-toggle { display: block; }
-  .wordmark span { font-size: 22px; }
-  .site-header.is-scrolled .wordmark span { font-size: 20px; }
-  .wordmark small { font-size: 8.5px; }
+  .wordmark { justify-self: center; }
+  .wordmark svg, .site-header.is-scrolled .wordmark svg { width: 168px; }
 
   .hero-inner { grid-template-columns: 1fr; row-gap: 28px; }
   .hero-title, .hero-aside { grid-column: 1; justify-self: start; }
